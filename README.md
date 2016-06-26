@@ -1,4 +1,4 @@
-# kemalyst-validators
+# Kemalyst Validators
 
 Kemalyst Validators provides a standard way of creating validation for models.
 The library is built for Kemalyst but can be leveraged by any plain old
@@ -13,7 +13,6 @@ dependencies:
   kemalyst-validators:
     github: drujensen/kemalyst-validators
 ```
-
 
 ## Usage
 
@@ -64,7 +63,7 @@ RoadMap:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/kemalyst-validators/fork )
+1. Fork it ( https://github.com/drujensen/kemalyst-validators/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -72,4 +71,4 @@ RoadMap:
 
 ## Contributors
 
-- drujensen (https://github.com/drujensen) Dru Jensen - creator, maintainer
+- [drujensen](https://github.com/drujensen) Dru Jensen - creator, maintainer
