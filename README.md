@@ -72,4 +72,4 @@ RoadMap:
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Dru Jensen - creator, maintainer
+- drujensen (https://github.com/drujensen) Dru Jensen - creator, maintainer
