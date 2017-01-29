@@ -25,11 +25,9 @@ class Person
   include Kemalyst::Validators
   property name : String?
   
-  validate "Name is required", -> (this : Person) do 
-    return this.name != nil
-  end
+  validate :name, "is required", -> (this : Person) { this.name != nil }
   
-  validate "Name must be 3 characters long", -> (this : Person) do 
+  validate :name, "must be 3 characters long", -> (this : Person) do 
     if name = this.name
       return name.size > 2
     end
@@ -41,25 +39,26 @@ class Person
 end
 ```
 
-The `validate` macro takes two parameters.  The first is the message that will
-display when the validation fails.  The second is a `Proc` that is provided an
+The `validate` macro takes three parameters.  The symbol of the field and the message that will
+display when the validation fails.  The third is a `Proc` that is provided an
 instance of `self` and returns either true or false.
 
 To check to see if your instance is valid, call `valid?`.  Each Proc will be
 called and if any of them fails, an `errors` Array with the messages is
 returned.
 
+If no Symbol is provided as a first parameter, the errors will be added to the `:base` field.
+
 ```crystal
 person = Person.new(name: "JD")
 person.valid?.should eq false
-person.errors[0].should eq "Name must be 3 characters long"
+person.errors[0].to_s.should eq "Name must be 3 characters long"
 ```
 
 ## Development
 
 RoadMap:
 - [] Provide standard validators that can be used per field
-- [] Provide field name that fails in the errors Array
 
 ## Contributing
 

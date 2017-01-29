@@ -4,11 +4,9 @@ class Person
   include Kemalyst::Validators
   property name : String?
   
-  validate "Name is required", -> (this : Person) do 
-    return this.name != nil
-  end
+  validate :name, "is required", -> (this : Person) { this.name != nil } 
   
-  validate "Name must be 3 characters long", -> (this : Person) do 
+  validate :name, "must be 3 characters long", -> (this : Person) do 
     if name = this.name
       return name.size > 2
     end
@@ -29,7 +27,7 @@ describe Kemalyst::Validators do
     it "returns false if name is not present" do
       person = Person.new
       person.valid?.should eq false
-      person.errors[0].should eq "Name is required"
+      person.errors[0].to_s.should eq "Name is required"
     end
   end
 
@@ -42,7 +40,7 @@ describe Kemalyst::Validators do
     it "returns invalid if name is less than 2 characters" do
       person = Person.new(name: "JD")
       person.valid?.should eq false
-      person.errors[0].should eq "Name must be 3 characters long"
+      person.errors[0].to_s.should eq "Name must be 3 characters long"
     end
   end
 end
